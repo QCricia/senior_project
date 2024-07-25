@@ -62,7 +62,7 @@ for i in range(200):
     test_paint.append(Paint(200, 200, window, test_image, 200))
 test_paint2 = []
 for i in range(200):
-    test_paint2.append(Paint(400, 400, window, test_image2, 100))
+    test_paint2.append(Paint(400, 400, window, test_image2, 0))
 
 while True:
     # window.fill(0)
@@ -72,9 +72,9 @@ while True:
     if (pygame.time.get_ticks()/1000) < 60:
         for i in range(200):
             test_paint[i].paint()
-    # elif (pygame.time.get_ticks()/1000) < 120:
-        # for i in range(200):
-        #     test_paint2[i].paint()
+    elif (pygame.time.get_ticks()/1000) < 120:
+        for i in range(200):
+            test_paint2[i].paint()
 
     pygame.display.update()
     clock.tick(120)
