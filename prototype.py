@@ -10,17 +10,22 @@ clock = pygame.time.Clock()
 pygame.display.init()
 pygame.mouse.set_visible(False)
 
+# find current screen info
+info = pygame.display.Info()
+print(info.current_h)
+print(info.current_w)
+
 # create window height and width
-width = 800
-height = 800
+width = 1440
+height = 960
 screen_size = (width,height)
 
 # create the display surface object of specific dimension.
 window = pygame.display.set_mode((screen_size), pygame.NOFRAME)
 window.fill(0)
 
-test_image = pygame.image.load("images/testing.png")
-test_image2 = pygame.image.load("images/testing2.png")
+test_image = pygame.image.load("testing.png")
+test_image2 = pygame.image.load("testing2.png")
 
 # class that creates paint objects that move randomly
 class Paint():
@@ -59,7 +64,7 @@ class Paint():
 
 test_paint = []
 for i in range(200):
-    test_paint.append(Paint(200, 200, window, test_image, 200))
+    test_paint.append(Paint(200, 200, window, test_image, 0))
 test_paint2 = []
 for i in range(200):
     test_paint2.append(Paint(400, 400, window, test_image2, 0))
