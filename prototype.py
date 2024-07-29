@@ -24,12 +24,16 @@ screen_size = (width,height)
 window = pygame.display.set_mode((screen_size), pygame.NOFRAME)
 window.fill(0)
 
-test_image3 = pygame.image.load("vernacular_mali_1.png")
-test_image4 = pygame.image.load("pottery_mali.png")
-test_image5 = pygame.image.load("statue_mali.png")
-test_image6 = pygame.image.load("pottery_norway.png")
-test_image7 = pygame.image.load("vernacular_norway_1.png")
-test_image8 = pygame.image.load("vernacular_norway_2.png")
+# an array with all the image names as strings, so I can initialize images in for loop
+image_names = ["vernacular_mali_1.png", "pottery_mali.png", "vernacular_mali_2.png", 
+               "vernacular_mali_3.png", "statue_mali.png", "vernacular_columbia_1.png", 
+               "vernacular_columbia_2.png", "vernacular_norway_1.png", "vernacular_norway_2.png", 
+               "pottery_columbia_2.png", "pottery_columbia.png", "pottery_norway.png"]
+
+# create an array with all of the image objects
+image_objects = []
+for i in range(len(image_names)):
+    image_objects.append(pygame.image.load(image_names[i]))
 
 # class that creates paint objects that move randomly
 class Paint():
@@ -72,32 +76,32 @@ test_paint = []
 test_x = random.randint(0, width)
 test_y = random.randint(0, height)
 for i in range(200):
-    test_paint.append(Paint(test_x, test_y, window, test_image3, 720))
+    test_paint.append(Paint(test_x, test_y, window, image_objects[0], 720))
 test_paint2 = []
 test_x = random.randint(0, width)
 test_y = random.randint(0, height)
 for i in range(200):
-    test_paint2.append(Paint(test_x, test_y, window, test_image4, 720))
+    test_paint2.append(Paint(test_x, test_y, window, image_objects[1], 720))
 test_paint3 = []
 test_x = random.randint(0, width)
 test_y = random.randint(0, height)
 for i in range(200):
-    test_paint3.append(Paint(test_x, test_y, window, test_image5, 720))
+    test_paint3.append(Paint(test_x, test_y, window, image_objects[2], 720))
 test_paint4 = []
 test_x = random.randint(0, width)
 test_y = random.randint(0, height)
 for i in range(200):
-    test_paint4.append(Paint(test_x, test_y, window, test_image6, 720))
+    test_paint4.append(Paint(test_x, test_y, window, image_objects[3], 720))
 test_paint5 = []
 test_x = random.randint(0, width)
 test_y = random.randint(0, height)
 for i in range(200):
-    test_paint5.append(Paint(test_x, test_y, window, test_image7, 720))
+    test_paint5.append(Paint(test_x, test_y, window, image_objects[4], 720))
 test_paint6 = []
 test_x = random.randint(0, width)
 test_y = random.randint(0, height)
 for i in range(200):
-    test_paint6.append(Paint(test_x, test_y, window, test_image8, 720))
+    test_paint6.append(Paint(test_x, test_y, window, image_objects[5], 720))
 
 while True:
     # window.fill(0)
