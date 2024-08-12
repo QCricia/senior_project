@@ -25,10 +25,10 @@ window = pygame.display.set_mode((screen_size), pygame.NOFRAME)
 window.fill(0)
 
 # an array with all the image names as strings, so I can initialize images in for loop
-image_names = ["vernacular_mali_1.png", "pottery_mali.png", "vernacular_mali_2.png", 
-               "vernacular_mali_3.png", "statue_mali.png", "vernacular_columbia_1.png", 
-               "vernacular_columbia_2.png", "vernacular_norway_1.png", "vernacular_norway_2.png", 
-               "pottery_columbia_2.png", "pottery_columbia.png", "pottery_norway.png"]
+image_names = ["mali_1.png", "mali_2.png", "mali_3.png", 
+               "mali_4.png", "mali_5.png", "columbia_1.png", 
+               "columbia_2.png", "columbia_3.png", "columbia_4.png", 
+               "norway_1.png", "norway_2.png", "norway_3.png"]
 
 # create an array with all of the image objects
 image_objects = []
@@ -109,12 +109,22 @@ class Scrapbook():
             self.paints.pop(self.index - 1)
             self.index = random.randint(1, len(self.paints) - 1)
             self.time_range += 30
+            
+    def print_place(self):
+        t = pygame.time.get_ticks()/1000
+        if (t) < 0.5:
+            print(self.places[self.index])
+            print(self.places[self.index - 1])
+        if (t) > self.time_range and (t) <= (self.time_range + 0.01):
+            self.places.pop(self.index)
+            self.places.pop(self.index - 1)
    
 vernacular_sketchbook = Scrapbook(image_objects, image_names, 30, window) 
  
 
 while True:
     vernacular_sketchbook.get_crafting()
+    vernacular_sketchbook.print_place()
 
     pygame.display.update()
-    clock.tick(120)
+    clock.tick(240)

@@ -9,4 +9,4 @@
     - 7.29 working on adding more images to collage
 *testing.png and testing2.png: image files used for prototype.py*
     - 7.24 vernacular_germany (edited) and vernacular_norway (edited)
-*list of images so far:* ["vernacular_mali_1.png", "vernacular_mali_2.png", "vernacular_mali_3.png", "pottery_mali.png", "statue_mali.png", "vernacular_columbia_1.png", vernacular_columbia_2.png", "pottery_columbia.png", "pottery_columbia_2.png", "vernacular_norway_1.png", "vernacular_norway_2.png", pottery_norway.png"]
+*list of images so far:* ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mali_5.png", "columbia_1.png", "columbia_2.png", "columbia_3.png", "columbia_4.png", "norway_1.png", "norway_2.png", "norway_3.png"]
