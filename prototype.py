@@ -5,6 +5,11 @@ import random
 # initiate pygame
 pygame.init()
 
+# for writing text on the screen
+pygame.font.init() 
+                   
+my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 30)
+
 # init clock and display
 clock = pygame.time.Clock()
 pygame.display.init()
@@ -25,10 +30,23 @@ window = pygame.display.set_mode((screen_size), pygame.NOFRAME)
 window.fill(0)
 
 # an array with all the image names as strings, so I can initialize images in for loop
-image_names = ["mali_1.png", "mali_2.png", "mali_3.png", 
-               "mali_4.png", "mali_5.png", "columbia_1.png", 
-               "columbia_2.png", "columbia_3.png", "columbia_4.png", 
-               "norway_1.png", "norway_2.png", "norway_3.png"]
+image_names = ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mali_5.png", "mali_6.png",
+               "columbia_1.png", "columbia_2.png", "columbia_3.png", "columbia_4.png", 
+               "norway_1.png", "norway_2.png", "norway_3.png", 
+               "cameroon_1.png", "cameroon_2.png", "cameroon_3.png", "cameroon_4.png", 
+               "china_1.png", "china_2.png", "china_3.png", "china_4.png", "china_5.png",
+               "denmark_1.png", "denmark_2.png",
+               "ethiopia_1.png","ethiopia_2.png", "ethiopia_3.png",
+               "ghana_1.png", "ghana_2.png",
+               "greece_1.png", "greece_2.png",
+               "indonesia_1.png", "indonesia_2.png", "indonesia_3.png",
+               "inuit_1.png",
+               "iraq_1.png", "iraq_2.png",
+               "japan_1.png", "japan_2.png", "japan_3.png", "japan_4.png",
+               "mexico_1.png", "mexico_2.png",
+               "myanmar_1.png", "myanmar_2.png",
+               "navajo_1.png",
+               "new_zealand_1.png", "new_zealand_2.png"] 
 
 # create an array with all of the image objects
 image_objects = []
@@ -52,6 +70,7 @@ class Scrapbook():
         def __init__(self, x, y, surface, image):
             self.x = x
             self.y = y
+            self.start = [x, y]
             self.offset_x = 720 - self.x
             self.offset_y = 470 - self.y
             self.surface = surface
@@ -60,8 +79,6 @@ class Scrapbook():
             self.radius = 1
             self.directions_x = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
             self.directions_y = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
-            # self.directions_x = [-2, -1, 0, 1, 2]
-            # self.directions_y = [-2, -1, 0, 1, 2]
             self.speed = 0
             
         # takes the color of the pixel at a given location to give to the paint function
@@ -120,11 +137,17 @@ class Scrapbook():
             self.places.pop(self.index - 1)
    
 vernacular_sketchbook = Scrapbook(image_objects, image_names, 30, window) 
- 
+
+test_text_surface = my_font.render(image_names[0][0:-6].upper(), False, (255, 255, 255))
 
 while True:
-    vernacular_sketchbook.get_crafting()
-    vernacular_sketchbook.print_place()
-
+    # vernacular_sketchbook.get_crafting()
+    
+    window.blit(test_text_surface, (300,300))
+    
+    # vernacular_sketchbook.print_place()
+    # if (pygame.time.get_ticks()/1000) > 120:
+    #     print("yes")
+    #     pygame.image.save(window, "testing.png")
     pygame.display.update()
     clock.tick(240)
