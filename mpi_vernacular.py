@@ -1,28 +1,51 @@
+#!/usr/bin/env python
+import os
+import os.path
+import sys
 import pygame
+from pygame.locals import *
 import time
 import random
+from mpi4py import MPI
 
-# initiate pygame
+# initiate pygame and give permission to use pygame's functionality.
 pygame.init()
 
-# for writing text on the screen
-pygame.font.init() 
-                   
-my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 30)
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
+
+# set window position
+os.environ['SDL_VIDEO_WINDOW_POS'] = "0,0"
+# get this display
+os.environ['DISPLAY'] = ':0.0'
+# with caffeine installed (sudo apt install caffeine) we can wake the screen
+os.system('caffeinate sleep 1') # passes caffeinate out to shell to wake screensaver 
 
 # init clock and display
 clock = pygame.time.Clock()
 pygame.display.init()
 pygame.mouse.set_visible(False)
 
-# create window height and width
-width = 1440
-height = 960
+# get the screen hight and width
+disp_info = pygame.display.Info()
+width = disp_info.current_w
+height = disp_info.current_h
 screen_size = (width,height)
+universe_size = (width*2, height*2)
 
-# create the display surface object of specific dimension.
+# set up the screen
 window = pygame.display.set_mode((screen_size), pygame.NOFRAME)
 window.fill(0)
+
+# Constants
+w0 = 0; h0 = 0
+w1 = width; h1 = 0
+w2 = 0; h2 = height
+w3 = width; h3 = height
+my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 30)
+
+######### from here it is the same as prototype
 
 # an array with all the image names as strings, so I can initialize images in for loop
 vernacular_names = ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mali_5.png", "mali_6.png",
@@ -138,7 +161,7 @@ class Scrapbook():
     def get_crafting(self):
         if (len(self.paint_indexes)) <= 3:
             print("hi")
-            pygame.image.save(self.surface, "testing2.png")
+            pygame.image.save(self.surface, "testing.png")
             return
         if (pygame.time.get_ticks()/1000) < self.time_range:
             for i in range(200):
@@ -177,8 +200,8 @@ class Scrapbook():
         rect_surface = pygame.Surface((len(place_name_1) * 31, 50), pygame.SRCALPHA)
         rect_surface_2 = pygame.Surface((len(place_name_2) * 31, 50), pygame.SRCALPHA)
         # Draw a semi-transparent rectangle on the new surface
-        pygame.draw.rect(rect_surface, (255, 255, 255, 100), rect_surface.get_rect())
-        pygame.draw.rect(rect_surface_2, (255, 255, 255, 100), rect_surface_2.get_rect())
+        pygame.draw.rect(rect_surface, (255, 255, 255, 50), rect_surface.get_rect())
+        pygame.draw.rect(rect_surface_2, (255, 255, 255, 50), rect_surface_2.get_rect())
         # Blit the rectangle surface onto the main screen
         self.surface.blit(rect_surface, (self.place_x_1 - 20, self.place_y_1 - 10))
         if self.different_places:
@@ -191,10 +214,32 @@ class Scrapbook():
     def print_place(self):
         self.surface.blit(self.places_surface, (0,0))
         
-vernacular_sketchbook = Scrapbook(vernacular_objects, vernacular_names, 30, window) 
+vernacular_sketchbook = Scrapbook(vernacular_objects, vernacular_names, 30, window)
 
+time = 0
+
+def run_it():
+    comm.barrier()
+    if rank == 0:
+        if (pygame.time.get_ticks()/1000) > 1:
+            vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 3)
+        vernacular_sketchbook.get_crafting()
+        comm.bcast(vernacular_sketchbook.paint_indexes, root = 0)
+    elif rank == 1:
+        vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 0)
+        vernacular_sketchbook.get_crafting()
+        comm.bcast(vernacular_sketchbook.paint_indexes, root = 1)
+    elif rank == 2:
+        vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 1)
+        vernacular_sketchbook.get_crafting()
+        comm.bcast(vernacular_sketchbook.paint_indexes, root = 2)
+    elif rank == 3:
+        vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 2)
+        vernacular_sketchbook.get_crafting()
+        comm.bcast(vernacular_sketchbook.paint_indexes, root = 3)
+        
 while True:
-    vernacular_sketchbook.get_crafting()
+    run_it()
     
     pygame.display.update()
     clock.tick(240)
