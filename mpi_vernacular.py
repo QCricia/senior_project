@@ -44,6 +44,8 @@ w1 = width; h1 = 0
 w2 = 0; h2 = height
 w3 = width; h3 = height
 my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 22)
+my_font_2 = pygame.font.Font('Flux_Architect_Regular.ttf', 180)
+my_font_3 = pygame.font.Font('Flux_Architect_Regular.ttf', 90)
 
 ######### from here it is the same as prototype
 
@@ -218,6 +220,18 @@ class Scrapbook():
 vernacular_sketchbook = Scrapbook(vernacular_objects, vernacular_names, 30, window)
 
 time = 0
+
+title = my_font_2.render("Sustainable in the Vernacular", False, [255,255,255])
+title_2 = my_font_3.render("Cassie Halaszynski", False, [255,255,255])
+print(title.get_width())
+if rank == 0:
+    window.blit(title, (175,200))
+    window.blit(title_2, (1377,400))
+    # pygame.image.save(window, "title_test_0.png")
+elif rank == 1:
+    window.blit(title, (-1744.5,200))
+    window.blit(title_2, (-543,400))
+    pygame.image.save(window, "title_test_1.png")
 
 def run_it():
     comm.barrier()

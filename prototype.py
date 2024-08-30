@@ -9,6 +9,8 @@ pygame.init()
 pygame.font.init() 
                    
 my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 22)
+my_font_2 = pygame.font.Font('Flux_Architect_Regular.ttf', 180)
+my_font_3 = pygame.font.Font('Flux_Architect_Regular.ttf', 90)
 
 # init clock and display
 clock = pygame.time.Clock()
@@ -193,6 +195,12 @@ class Scrapbook():
         self.surface.blit(self.places_surface, (0,0))
         
 vernacular_sketchbook = Scrapbook(vernacular_objects, vernacular_names, 30, window) 
+
+title = my_font_2.render("Sustainable in the Vernacular", False, [255,255,255])
+title_2 = my_font_3.render("Cassie Halaszynski", False, [255,255,255])
+print(title_2.get_width())
+window.blit(title, (175,200))
+window.blit(title_2, (175,400))
 
 while True:
     vernacular_sketchbook.get_crafting()
