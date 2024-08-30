@@ -1,5 +1,5 @@
-# senior_project
-
+# Sustainability inthe Vernacular
+## By Cassie Halaszysnki ## <br />
 **Cassie Halaszynski** <br />
 - Summer 2024 ICAM Senior Project Repository <br />
 
