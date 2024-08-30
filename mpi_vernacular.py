@@ -43,7 +43,7 @@ w0 = 0; h0 = 0
 w1 = width; h1 = 0
 w2 = 0; h2 = height
 w3 = width; h3 = height
-my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 30)
+my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 22)
 
 ######### from here it is the same as prototype
 
@@ -51,26 +51,26 @@ my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 30)
 vernacular_names = ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mali_5.png", "mali_6.png",
                "columbia_1.png", "columbia_2.png", "columbia_3.png", "columbia_4.png", 
                "norway_1.png", "norway_2.png", "norway_3.png", "norway_4.png", "norway_5.png", 
-               "cameroon_1.png", "cameroon_2.png", "cameroon_3.png", 
+               "cameroon_1.png", "cameroon_2.png", "cameroon_3.png", "cameroon_5.png", 
                "china_2.png", "china_3.png", "china_4.png", "china_5.png",
-               "denmark_1.png", "denmark_2.png",
-               "ethiopia_1.png","ethiopia_2.png",
+               "denmark_1.png", "denmark_2.png", "denmark_3.png",
+               "ethiopia_1.png","ethiopia_2.png", "ethiopia_4.png",
                "ghana_1.png", "ghana_2.png",
-               "greece_1.png", "greece_2.png",
+               "greece_1.png", "greece_2.png", "greece_3.png",
                "indonesia_2.png", "indonesia_3.png", "indonesia_4.png", "indonesia_5.png",
-               "inuit_1.png",
-               "iraq_1.png", "iraq_2.png",
-               "japan_1.png", "japan_2.png", "japan_3.png", "japan_4.png",
-               "mexico_1.png", "mexico_2.png",
+               "inuit_1.png", "inuit_2.png", "inuit_3.png",
+               "iraq_1.png", "iraq_2.png", "iraq_3.png", "iraq_4.png",
+               "japan_1.png", "japan_2.png", "japan_3.png", "japan_4.png", "japan_5.png",
+               "mexico_1.png", "mexico_2.png", "mexico_3.png",
                "myanmar_1.png", "myanmar_2.png",
-               "navajo_1.png",
-               "new_zealand_1.png", "new_zealand_2.png",
-               "pueblo_1.png", "pueblo_2.png",
-               "russia_1.png", "russia_2.png",
+               "navajo_1.png", "navajo_2.png", "navajo_3.png", "navajo_4.png",
+               "new_zealand_1.png", "new_zealand_2.png", "new_zealand_3.png", "new_zealand_4.png",
+               "pueblo_1.png", "pueblo_2.png", "pueblo_3.png",
+               "russia_1.png", "russia_2.png", "russia_3.png", "russia_4.png", "russia_5.png",
                "saudi_arabia_1.png", "saudi_arabia_2.png", "saudi_arabia_3.png",
-               "vietnam_1.png", "vietnam_2.png",
-               "phillipines_1.png", "phillipines_2.png",
-               "germany_1.png", "germany_2.png"] 
+               "vietnam_1.png", "vietnam_2.png", "vietnam_3.png", "vietnam_4.png",
+               "phillipines_1.png", "phillipines_2.png", "phillipines_3.png",
+               "germany_1.png", "germany_2.png", "germany_3.png"] 
 
 plant_names = ["indonesia_1.png", "ethiopia_3.png", "china_1.png", "cameroon_4.png", ]
 
@@ -139,6 +139,17 @@ class Scrapbook():
             if self.color[3] == 0:
                 return
             pygame.draw.circle(self.surface, self.color, (self.x, self.y), self.radius, 0)
+            
+        def paint_no_image(self):
+            self.speed += 1
+            if self.speed%2 != 0:
+                return
+            self.x += self.directions_x[random.randint(0, len(self.directions_x) - 1)]
+            self.y += self.directions_y[random.randint(0, len(self.directions_y) - 1)]
+            if self.color[3] == 0:
+                return
+            pygame.draw.circle(self.surface, self.color, (self.x, self.y), self.radius, 0)
+            
            
     def initialize_array(self):
         # array that contains arrays of paint objects
@@ -160,8 +171,10 @@ class Scrapbook():
     # using the given time constraints, run the scrapbook, pasting images and places names 
     def get_crafting(self):
         if (len(self.paint_indexes)) <= 3:
-            print("hi")
-            pygame.image.save(self.surface, "testing.png")
+            # print("hi")
+            for j in range(len(self.paints)):
+                for i in range(200):
+                    self.paints[j][i].paint_no_image()
             return
         if (pygame.time.get_ticks()/1000) < self.time_range:
             for i in range(200):
@@ -177,12 +190,9 @@ class Scrapbook():
             self.ind_1 = self.paint_indexes[self.index - 1]
             self.init_place()
             self.time_range += 30
-            print("rank" + str(rank) + ":")
-            print(self.paint_indexes)
+            # print(self.time_range)
             
-            # pygame.image.save(self.surface, "testing_" + str(self.time_range) + ".png")
-            
-    # turns the fil names into a writeable place name, creates a text object at a randomized location, blits text object onto
+    # turns the file names into a writeable place name, creates a text object at a randomized location, blits text object onto
     # text surface, then draws a rectangle onece behind the text(the rectangle can be covered but not the text)
     def init_place(self):
         place_name_1 = self.places[self.ind][0:-6].upper()
@@ -197,17 +207,6 @@ class Scrapbook():
         self.place_y_1 = random.randint(30,height - 30)
         self.place_x_2 = random.randint(30,width - 150)
         self.place_y_2 = random.randint(30,height - 30)
-        
-        # Create a surface with per-pixel alpha (32-bit color depth)
-        rect_surface = pygame.Surface((len(place_name_1) * 31, 50), pygame.SRCALPHA)
-        rect_surface_2 = pygame.Surface((len(place_name_2) * 31, 50), pygame.SRCALPHA)
-        # Draw a semi-transparent rectangle on the new surface
-        pygame.draw.rect(rect_surface, (255, 255, 255, 50), rect_surface.get_rect())
-        pygame.draw.rect(rect_surface_2, (255, 255, 255, 50), rect_surface_2.get_rect())
-        # Blit the rectangle surface onto the main screen
-        self.surface.blit(rect_surface, (self.place_x_1 - 20, self.place_y_1 - 10))
-        if self.different_places:
-            self.surface.blit(rect_surface_2, (self.place_x_2 - 20, self.place_y_2 - 10))
         
         self.places_surface.blit(self.place_text_surface_1, (self.place_x_1,self.place_y_1))
         if self.different_places:
