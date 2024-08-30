@@ -200,7 +200,7 @@ title = my_font_2.render("Sustainable in the Vernacular", False, [255,255,255])
 title_2 = my_font_3.render("Cassie Halaszynski", False, [255,255,255])
 print(title_2.get_width())
 window.blit(title, (175,200))
-window.blit(title_2, (175,400))
+window.blit(title_2, (1377,400))
 
 while True:
     vernacular_sketchbook.get_crafting()
