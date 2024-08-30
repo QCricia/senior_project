@@ -1,16 +1,17 @@
-# Sustainability inthe Vernacular
-## By Cassie Halaszysnki ## <br />
-**Cassie Halaszynski** <br />
-- Summer 2024 ICAM Senior Project Repository <br />
-
+# Sustainability in the Vernacular
+### Cassie Halaszysnki Summer 2024 ICAM Senior Project Repository <br />
+<br />
 **Artist Statement** <br />
+  
 
-**Files** <br />
+**File Explanations** <br />
 *prototype.py: this file is the python program uses to experiment and try pieces of code* <br />
     - 7.24 working on image paint effects <br />
     - 7.29 working on adding more images to collage <br />
+<br />
 *testing.png and testing2.png: image files used for prototype.py* <br />
     - 7.24 vernacular_germany (edited) and vernacular_norway (edited) <br />
+<br />
 *list of images so far:* ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mali_5.png", "mali_6.png", 
                "columbia_1.png", "columbia_2.png", "columbia_3.png", "columbia_4.png", 
                "norway_1.png", "norway_2.png", "norway_3.png", "norway_4.png", "norway_5.png", 
