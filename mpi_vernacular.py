@@ -177,6 +177,8 @@ class Scrapbook():
             self.ind_1 = self.paint_indexes[self.index - 1]
             self.init_place()
             self.time_range += 30
+            print("rank" + str(rank) + ":")
+            print(self.paint_indexes)
             
             # pygame.image.save(self.surface, "testing_" + str(self.time_range) + ".png")
             
@@ -221,8 +223,8 @@ time = 0
 def run_it():
     comm.barrier()
     if rank == 0:
-        if (pygame.time.get_ticks()/1000) > 1:
-            vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 3)
+        # if (pygame.time.get_ticks()/1000) > 1:
+        #     vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 3)
         vernacular_sketchbook.get_crafting()
         comm.bcast(vernacular_sketchbook.paint_indexes, root = 0)
     elif rank == 1:
