@@ -74,7 +74,7 @@ vernacular_names = ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mal
                "phillipines_1.png", "phillipines_2.png", "phillipines_3.png",
                "germany_1.png", "germany_2.png", "germany_3.png"] 
 
-plant_names = ["indonesia_1.png", "ethiopia_3.png", "china_1.png", "cameroon_4.png", ]
+plant_names = ["indonesia_1.png", "ethiopia_3.png", "china_1.png", "cameroon_4.png"]
 
 # create an array with all of the image objects
 vernacular_objects = []

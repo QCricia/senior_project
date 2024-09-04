@@ -9,8 +9,8 @@ pygame.init()
 pygame.font.init() 
                    
 my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 22)
-my_font_2 = pygame.font.Font('Flux_Architect_Regular.ttf', 180)
-my_font_3 = pygame.font.Font('Flux_Architect_Regular.ttf', 90)
+my_font_2 = pygame.font.Font('Flux_Architect_Regular.ttf', 45)
+my_font_3 = pygame.font.Font('Flux_Architect_Regular.ttf', 30)
 
 # init clock and display
 clock = pygame.time.Clock()
@@ -51,7 +51,7 @@ vernacular_names = ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mal
                "phillipines_1.png", "phillipines_2.png", "phillipines_3.png",
                "germany_1.png", "germany_2.png", "germany_3.png"] 
 
-plant_names = ["indonesia_1.png", "ethiopia_3.png", "china_1.png", "cameroon_4.png", ]
+plant_names = ["indonesia_1.png", "ethiopia_3.png", "china_1.png", "cameroon_4.png"]
 
 # create an array with all of the image objects
 vernacular_objects = []
@@ -194,13 +194,13 @@ class Scrapbook():
     def print_place(self):
         self.surface.blit(self.places_surface, (0,0))
         
-vernacular_sketchbook = Scrapbook(vernacular_objects, vernacular_names, 30, window) 
+vernacular_sketchbook = Scrapbook(vernacular_objects, vernacular_names, 15, window) 
 
-title = my_font_2.render("Sustainable in the Vernacular", False, [255,255,255])
+title = my_font_2.render("Sustainability in the Vernacular", False, [255,255,255])
 title_2 = my_font_3.render("Cassie Halaszynski", False, [255,255,255])
-print(title_2.get_width())
-window.blit(title, (175,200))
-window.blit(title_2, (1377,400))
+# print(title.get_width())
+window.blit(title, (250,100))
+window.blit(title_2, (538,150))
 
 while True:
     vernacular_sketchbook.get_crafting()
