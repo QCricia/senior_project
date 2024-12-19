@@ -43,47 +43,47 @@ w0 = 0; h0 = 0
 w1 = width; h1 = 0
 w2 = 0; h2 = height
 w3 = width; h3 = height
-my_font = pygame.font.Font('Flux_Architect_Regular.ttf', 22)
-my_font_2 = pygame.font.Font('Flux_Architect_Regular.ttf', 180)
-my_font_3 = pygame.font.Font('Flux_Architect_Regular.ttf', 90)
+my_font = pygame.font.Font('/home/pi/work/chalaszynski/senior_project/Flux_Architect_Regular.ttf', 22)
+my_font_2 = pygame.font.Font('/home/pi/work/chalaszynski/senior_project/Flux_Architect_Regular.ttf', 180)
+my_font_3 = pygame.font.Font('/home/pi/work/chalaszynski/senior_project/Flux_Architect_Regular.ttf', 90)
 
 ######### from here it is the same as prototype
 
 # an array with all the image names as strings, so I can initialize images in for loop
-vernacular_names = ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mali_5.png", "mali_6.png",
-               "columbia_1.png", "columbia_2.png", "columbia_3.png", "columbia_4.png", 
-               "norway_1.png", "norway_2.png", "norway_3.png", "norway_4.png", "norway_5.png", 
-               "cameroon_1.png", "cameroon_2.png", "cameroon_3.png", "cameroon_5.png", 
-               "china_2.png", "china_3.png", "china_4.png", "china_5.png",
-               "denmark_1.png", "denmark_2.png", "denmark_3.png",
-               "ethiopia_1.png","ethiopia_2.png", "ethiopia_4.png",
-               "ghana_1.png", "ghana_2.png",
-               "greece_1.png", "greece_2.png", "greece_3.png",
-               "indonesia_2.png", "indonesia_3.png", "indonesia_4.png", "indonesia_5.png",
-               "inuit_1.png", "inuit_2.png", "inuit_3.png",
-               "iraq_1.png", "iraq_2.png", "iraq_3.png", "iraq_4.png",
-               "japan_1.png", "japan_2.png", "japan_3.png", "japan_4.png", "japan_5.png",
-               "mexico_1.png", "mexico_2.png", "mexico_3.png",
-               "myanmar_1.png", "myanmar_2.png",
-               "navajo_1.png", "navajo_2.png", "navajo_3.png", "navajo_4.png",
-               "new_zealand_1.png", "new_zealand_2.png", "new_zealand_3.png", "new_zealand_4.png",
-               "pueblo_1.png", "pueblo_2.png", "pueblo_3.png",
-               "russia_1.png", "russia_2.png", "russia_3.png", "russia_4.png", "russia_5.png",
-               "saudi_arabia_1.png", "saudi_arabia_2.png", "saudi_arabia_3.png",
-               "vietnam_1.png", "vietnam_2.png", "vietnam_3.png", "vietnam_4.png",
-               "phillipines_1.png", "phillipines_2.png", "phillipines_3.png",
-               "germany_1.png", "germany_2.png", "germany_3.png"] 
+vernacular_names = ["/home/pi/work/chalaszynski/senior_project/mali_1.png", "/home/pi/work/chalaszynski/senior_project/mali_2.png", "/home/pi/work/chalaszynski/senior_project/mali_3.png", "/home/pi/work/chalaszynski/senior_project/mali_4.png", "/home/pi/work/chalaszynski/senior_project/mali_5.png", "/home/pi/work/chalaszynski/senior_project/mali_6.png",
+               "/home/pi/work/chalaszynski/senior_project/columbia_1.png", "/home/pi/work/chalaszynski/senior_project/columbia_2.png", "/home/pi/work/chalaszynski/senior_project/columbia_3.png", "/home/pi/work/chalaszynski/senior_project/columbia_4.png", 
+               "/home/pi/work/chalaszynski/senior_project/norway_1.png", "/home/pi/work/chalaszynski/senior_project/norway_2.png", "/home/pi/work/chalaszynski/senior_project/norway_3.png", "/home/pi/work/chalaszynski/senior_project/norway_4.png", "/home/pi/work/chalaszynski/senior_project/norway_5.png", 
+               "/home/pi/work/chalaszynski/senior_project/cameroon_1.png", "/home/pi/work/chalaszynski/senior_project/cameroon_2.png", "/home/pi/work/chalaszynski/senior_project/cameroon_3.png", "/home/pi/work/chalaszynski/senior_project/cameroon_5.png", 
+               "/home/pi/work/chalaszynski/senior_project/china_2.png", "/home/pi/work/chalaszynski/senior_project/china_3.png", "/home/pi/work/chalaszynski/senior_project/china_4.png", "/home/pi/work/chalaszynski/senior_project/china_5.png",
+               "/home/pi/work/chalaszynski/senior_project/denmark_1.png", "/home/pi/work/chalaszynski/senior_project/denmark_2.png", "/home/pi/work/chalaszynski/senior_project/denmark_3.png",
+               "/home/pi/work/chalaszynski/senior_project/ethiopia_1.png","/home/pi/work/chalaszynski/senior_project/ethiopia_2.png", "/home/pi/work/chalaszynski/senior_project/ethiopia_4.png",
+               "/home/pi/work/chalaszynski/senior_project/ghana_1.png", "/home/pi/work/chalaszynski/senior_project/ghana_2.png",
+               "/home/pi/work/chalaszynski/senior_project/greece_1.png", "/home/pi/work/chalaszynski/senior_project/greece_2.png", "/home/pi/work/chalaszynski/senior_project/greece_3.png",
+               "/home/pi/work/chalaszynski/senior_project/indonesia_2.png", "/home/pi/work/chalaszynski/senior_project/indonesia_3.png", "/home/pi/work/chalaszynski/senior_project/indonesia_4.png", "/home/pi/work/chalaszynski/senior_project/indonesia_5.png",
+               "/home/pi/work/chalaszynski/senior_project/inuit_1.png", "/home/pi/work/chalaszynski/senior_project/inuit_2.png", "/home/pi/work/chalaszynski/senior_project/inuit_3.png",
+               "/home/pi/work/chalaszynski/senior_project/iraq_1.png", "/home/pi/work/chalaszynski/senior_project/iraq_2.png", "/home/pi/work/chalaszynski/senior_project/iraq_3.png", "/home/pi/work/chalaszynski/senior_project/iraq_4.png",
+               "/home/pi/work/chalaszynski/senior_project/japan_1.png", "/home/pi/work/chalaszynski/senior_project/japan_2.png", "/home/pi/work/chalaszynski/senior_project/japan_3.png", "/home/pi/work/chalaszynski/senior_project/japan_4.png", "/home/pi/work/chalaszynski/senior_project/japan_5.png",
+               "/home/pi/work/chalaszynski/senior_project/mexico_1.png", "/home/pi/work/chalaszynski/senior_project/mexico_2.png", "/home/pi/work/chalaszynski/senior_project/mexico_3.png",
+               "/home/pi/work/chalaszynski/senior_project/myanmar_1.png", "/home/pi/work/chalaszynski/senior_project/myanmar_2.png",
+               "/home/pi/work/chalaszynski/senior_project/navajo_1.png", "/home/pi/work/chalaszynski/senior_project/navajo_2.png", "/home/pi/work/chalaszynski/senior_project/navajo_3.png", "/home/pi/work/chalaszynski/senior_project/navajo_4.png",
+               "/home/pi/work/chalaszynski/senior_project/new_zealand_1.png", "/home/pi/work/chalaszynski/senior_project/new_zealand_2.png", "/home/pi/work/chalaszynski/senior_project/new_zealand_3.png", "/home/pi/work/chalaszynski/senior_project/new_zealand_4.png",
+               "/home/pi/work/chalaszynski/senior_project/pueblo_1.png", "/home/pi/work/chalaszynski/senior_project/pueblo_2.png", "/home/pi/work/chalaszynski/senior_project/pueblo_3.png",
+               "/home/pi/work/chalaszynski/senior_project/russia_1.png", "/home/pi/work/chalaszynski/senior_project/russia_2.png", "/home/pi/work/chalaszynski/senior_project/russia_3.png", "/home/pi/work/chalaszynski/senior_project/russia_4.png", "/home/pi/work/chalaszynski/senior_project/russia_5.png",
+               "/home/pi/work/chalaszynski/senior_project/saudi_arabia_1.png", "/home/pi/work/chalaszynski/senior_project/saudi_arabia_2.png", "/home/pi/work/chalaszynski/senior_project/saudi_arabia_3.png",
+               "/home/pi/work/chalaszynski/senior_project/vietnam_1.png", "/home/pi/work/chalaszynski/senior_project/vietnam_2.png", "/home/pi/work/chalaszynski/senior_project/vietnam_3.png", "/home/pi/work/chalaszynski/senior_project/vietnam_4.png",
+               "/home/pi/work/chalaszynski/senior_project/phillipines_1.png", "/home/pi/work/chalaszynski/senior_project/phillipines_2.png", "/home/pi/work/chalaszynski/senior_project/phillipines_3.png",
+               "/home/pi/work/chalaszynski/senior_project/germany_1.png", "/home/pi/work/chalaszynski/senior_project/germany_2.png", "/home/pi/work/chalaszynski/senior_project/germany_3.png"] 
 
-plant_names = ["indonesia_1.png", "ethiopia_3.png", "china_1.png", "cameroon_4.png"]
+# plant_names = ["indonesia_1.png", "ethiopia_3.png", "china_1.png", "cameroon_4.png"]
 
 # create an array with all of the image objects
 vernacular_objects = []
 for i in range(len(vernacular_names)):
     vernacular_objects.append(pygame.image.load(vernacular_names[i]))
     
-plant_objects = []
-for i in range(len(plant_names)):
-    plant_objects.append(pygame.image.load(plant_names[i]).convert_alpha())
+# plant_objects = []
+# for i in range(len(plant_names)):
+#     plant_objects.append(pygame.image.load(plant_names[i]).convert_alpha())
 
 class Scrapbook():
     def __init__(self, scraps, place_names, speed, surface):
@@ -197,8 +197,8 @@ class Scrapbook():
     # turns the file names into a writeable place name, creates a text object at a randomized location, blits text object onto
     # text surface, then draws a rectangle onece behind the text(the rectangle can be covered but not the text)
     def init_place(self):
-        place_name_1 = self.places[self.ind][0:-6].upper()
-        place_name_2 = self.places[self.ind_1][0:-6].upper()
+        place_name_1 = self.places[self.ind][42:-6].upper()
+        place_name_2 = self.places[self.ind_1][42:-6].upper()
         if place_name_1 == place_name_2:
             self.different_places = False
         else:
@@ -223,38 +223,32 @@ time = 0
 
 title = my_font_2.render("Sustainable in the Vernacular", False, [255,255,255])
 title_2 = my_font_3.render("Cassie Halaszynski", False, [255,255,255])
-print(title.get_width())
-if rank == 0:
-    window.blit(title, (175,200))
-    window.blit(title_2, (1377,400))
-    # pygame.image.save(window, "title_test_0.png")
-elif rank == 1:
-    window.blit(title, (-1744.5,200))
-    window.blit(title_2, (-543,400))
-    pygame.image.save(window, "title_test_1.png")
 
 def run_it():
+    if time < 5:
+        if rank == 0:
+            window.blit(title, (175,200))
+            window.blit(title_2, (1377,400))
+        elif rank == 1:
+            window.blit(title, (-1744.5,200))
+            window.blit(title_2, (-543,400))
+    
     comm.barrier()
     if rank == 0:
-        # if (pygame.time.get_ticks()/1000) > 1:
-        #     vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 3)
         vernacular_sketchbook.get_crafting()
-        comm.bcast(vernacular_sketchbook.paint_indexes, root = 0)
     elif rank == 1:
-        vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 0)
         vernacular_sketchbook.get_crafting()
-        comm.bcast(vernacular_sketchbook.paint_indexes, root = 1)
     elif rank == 2:
-        vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 1)
         vernacular_sketchbook.get_crafting()
-        comm.bcast(vernacular_sketchbook.paint_indexes, root = 2)
     elif rank == 3:
-        vernacular_sketchbook.paint_indexes = comm.bcast(vernacular_sketchbook.paint_indexes, root = 2)
         vernacular_sketchbook.get_crafting()
-        comm.bcast(vernacular_sketchbook.paint_indexes, root = 3)
         
 while True:
     run_it()
+    time += 1
     
     pygame.display.update()
     clock.tick(240)
+    
+    if (pygame.time.get_ticks()/1000) > 1770:
+        pygame.quit()

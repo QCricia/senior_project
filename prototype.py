@@ -24,6 +24,7 @@ screen_size = (width,height)
 
 # create the display surface object of specific dimension.
 window = pygame.display.set_mode((screen_size), pygame.NOFRAME)
+# window.fill([255,255,255])
 window.fill(0)
 
 # an array with all the image names as strings, so I can initialize images in for loop
@@ -50,6 +51,11 @@ vernacular_names = ["mali_1.png", "mali_2.png", "mali_3.png", "mali_4.png", "mal
                "vietnam_1.png", "vietnam_2.png", "vietnam_3.png", "vietnam_4.png",
                "phillipines_1.png", "phillipines_2.png", "phillipines_3.png",
                "germany_1.png", "germany_2.png", "germany_3.png"] 
+
+# vernacular_names = ["china_2.png", "china_3.png", "china_4.png", "saudi_arabia_1.png", "saudi_arabia_2.png", "saudi_arabia_3.png",
+#                     "japan_1.png", "japan_2.png", "japan_3.png", "japan_4.png", "japan_5.png",
+#                     "new_zealand_1.png", "new_zealand_2.png", "new_zealand_3.png", "new_zealand_4.png",
+#                     "myanmar_1.png", "myanmar_2.png", "mexico_1.png", "mexico_2.png", "mexico_3.png"]
 
 plant_names = ["indonesia_1.png", "ethiopia_3.png", "china_1.png", "cameroon_4.png"]
 
@@ -138,7 +144,7 @@ class Scrapbook():
         for j in range(len(self.images)):
             paint_loop = []
             test_x = random.randint(0, width)
-            test_y = random.randint(0, height)
+            test_y = random.randint(int(height/3), height)
             for i in range(200):
                 paint_loop.append(self.Paint(test_x, test_y, window, self.images[j]))
             self.paints.append(paint_loop)
@@ -196,14 +202,22 @@ class Scrapbook():
         
 vernacular_sketchbook = Scrapbook(vernacular_objects, vernacular_names, 15, window) 
 
-title = my_font_2.render("Sustainability in the Vernacular", False, [255,255,255])
-title_2 = my_font_3.render("Cassie Halaszynski", False, [255,255,255])
+# china_sketchbook = Scrapbook(china_vern, [], 15, window)
+
+title = my_font_2.render("Sustainability in the Vernacular", False, [255, 255, 255])
+title_2 = my_font_3.render("Cassie Halaszynski", False, [255, 255, 255])
 # print(title.get_width())
 window.blit(title, (250,100))
 window.blit(title_2, (538,150))
 
+time = 0
+
 while True:
     vernacular_sketchbook.get_crafting()
+    time += 1
+    # print(time)
+    if time/240 > 300:
+        pygame.image.save(window, "screenshot1.png")
     
     pygame.display.update()
     clock.tick(240)

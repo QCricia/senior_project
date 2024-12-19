@@ -3,7 +3,7 @@
 ### By Cassie Halaszysnki <br />
 <br />
 **Artist Statement** <br />
-  
+
 
 **Included Files** <br />
 *mpi_vernacular.py: this is the final, exhibited project. it is intended to be run on a four screen MPI Cluster named Paprika. This program creates a generative collage showing over 80 images of vernacular architecture and folk art. At the end of the collage generation, the screen dissolves into moving pixels. It runs indefinetly.* <br />
